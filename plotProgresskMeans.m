@@ -1,0 +1,26 @@
+function plotProgresskMeans(X, centroids, previous, idx, K, i)
+% X: Training examples.
+% centroids: centroids of k-means.
+% idx: index of training examples (according to centroids).
+% K: Number of cenrtroids.
+
+
+
+% Plot the examples
+plotDataPoints(X, idx, K);
+
+% Plot the centroids as black x's
+plot(centroids(:,1), centroids(:,2), 'x', ...
+     'MarkerEdgeColor','k', ...
+     'MarkerSize', 10, 'LineWidth', 3);
+
+% Plot the history of the centroids with lines
+for j=1:size(centroids,1)
+    drawLine(centroids(j, :), previous(j, :));
+end
+
+% Title
+title(sprintf('Iteration number %d', i))
+
+end
+
